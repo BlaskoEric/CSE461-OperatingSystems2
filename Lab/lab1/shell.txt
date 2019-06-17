@@ -1,0 +1,23 @@
+Script started on 2019-01-13 11:20:08-08:00
+]0;005670557@csusb.edu@jb358-1:~/cse461[005670557@csusb.edu@jb358-1 cse461]$ ./simpleShell
+[2J[HWhat is Thy Bidding, My Master?
+$ls
+shell.txt  simpleShell	simpleShell.cpp  xv6
+$ls -l
+total 48
+-rw-r--r-- 1 005670557@csusb.edu domain users@csusb.edu    0 Jan 13 11:20 shell.txt
+-rwxr-xr-x 1 005670557@csusb.edu domain users@csusb.edu 9016 Jan 13 11:15 simpleShell
+-rw-r--r-- 1 005670557@csusb.edu domain users@csusb.edu 2556 Jan 13 11:13 simpleShell.cpp
+drwxr-xr-x 2 005670557@csusb.edu domain users@csusb.edu  282 Jan  9 10:02 xv6
+$ps
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S 453291 6135  6133  0  80   0 - 56467 -      pts/1    00:00:00 bash
+0 S 453291 6168  6135  0  80   0 -  3448 -      pts/1    00:00:00 simpleShell
+0 R 453291 6172  6168  0  80   0 - 10436 -      pts/1    00:00:00 ps
+$pss
+I find your lack of command disturbing...
+$exit
+You have failed me for the last time...
+]0;005670557@csusb.edu@jb358-1:~/cse461[005670557@csusb.edu@jb358-1 cse461]$ exit
+
+Script done on 2019-01-13 11:20:30-08:00

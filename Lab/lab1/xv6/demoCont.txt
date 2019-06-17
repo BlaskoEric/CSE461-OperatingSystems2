@@ -1,0 +1,105 @@
+Script started on 2019-01-13 11:53:07-08:00
+]0;005670557@csusb.edu@jb358-1:~/cse461/xv6[005670557@csusb.edu@jb358-1 xv6]$ gdb
+GNU gdb (GDB) Fedora 8.1.1-3.fc28
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+warning: File "/home/csusb.edu/005670557/cse461/xv6/.gdbinit" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load:/usr/lib/golang/src/runtime/runtime-gdb.py".
+To enable execution of this file add
+	add-auto-load-safe-path /home/csusb.edu/005670557/cse461/xv6/.gdbinit
+line to your configuration file "/home/csusb.edu/005670557/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/home/csusb.edu/005670557/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+(gdb) target remote :28291
+Remote debugging using :28291
+warning: Remote gdbserver does not support determining executable automatically.
+RHEL <=6.8 and <=7.2 versions of gdbserver do not support such automatic executable detection.
+The following versions of gdbserver support it:
+- Upstream version of gdbserver (unsupported) 7.10 or later
+- Red Hat Developer Toolset (DTS) version of gdbserver from DTS 4.0 or later (only on x86_64)
+- RHEL-7.3 versions of gdbserver (on any architecture)
+warning: No executable has been specified and target does not support
+determining executable automatically.  Try using the "file" command.
+0x0000fff0 in ?? ()
+(gdb) target remote :28291
+A program is being debugged already.  Kill it? (y or n) n
+Program not killed.
+(gdb) continue
+Continuing.
+^Ac   f file kernel
+^Ac^A^C
+Thread 1 received signal SIGINT, Interrupt.
+0x80103851 in ?? ()
+(gdb) file kernel
+A program is being debugged already.
+Are you sure you want to change the file? (y or n) y
+Reading symbols from kernel...done.
+(gdb) set disassembly-flavor intel
+(gdb) disass
+Dump of assembler code for function mycpu:
+   0x80103840 <+0>:	push   ebp
+   0x80103841 <+1>:	mov    ebp,esp
+   0x80103843 <+3>:	push   esi
+   0x80103844 <+4>:	push   ebx
+   0x80103845 <+5>:	pushf  
+   0x80103846 <+6>:	pop    eax
+   0x80103847 <+7>:	test   ah,0x2
+   0x8010384a <+10>:	jne    0x801038a9 <mycpu+105>
+   0x8010384c <+12>:	call   0x80102830 <lapicid>
+=> 0x80103851 <+17>:	mov    esi,DWORD PTR ds:0x80112d00
+   0x80103857 <+23>:	test   esi,esi
+   0x80103859 <+25>:	jle    0x8010389c <mycpu+92>
+   0x8010385b <+27>:	movzx  edx,BYTE PTR ds:0x80112780
+   0x80103862 <+34>:	cmp    eax,edx
+   0x80103864 <+36>:	je     0x80103895 <mycpu+85>
+   0x80103866 <+38>:	xor    edx,edx
+   0x80103868 <+40>:	nop
+   0x80103869 <+41>:	lea    esi,[esi+eiz*1+0x0]
+   0x80103870 <+48>:	add    edx,0x1
+   0x80103873 <+51>:	cmp    edx,esi
+   0x80103875 <+53>:	je     0x8010389c <mycpu+92>
+   0x80103877 <+55>:	imul   ecx,edx,0xb0
+---Type <return> to continue, or q <return> to quit---
+   0x8010387d <+61>:	movzx  ebx,BYTE PTR [ecx-0x7feed880]
+   0x80103884 <+68>:	cmp    ebx,eax
+   0x80103886 <+70>:	jne    0x80103870 <mycpu+48>
+   0x80103888 <+72>:	lea    eax,[ecx-0x7feed880]
+   0x8010388e <+78>:	lea    esp,[ebp-0x8]
+   0x80103891 <+81>:	pop    ebx
+   0x80103892 <+82>:	pop    esi
+   0x80103893 <+83>:	pop    ebp
+   0x80103894 <+84>:	ret    
+   0x80103895 <+85>:	mov    eax,0x80112780
+   0x8010389a <+90>:	jmp    0x8010388e <mycpu+78>
+   0x8010389c <+92>:	sub    esp,0xc
+   0x8010389f <+95>:	push   0x8010757c
+   0x801038a4 <+100>:	call   0x80100390 <panic>
+   0x801038a9 <+105>:	sub    esp,0xc
+   0x801038ac <+108>:	push   0x801076b4
+   0x801038b1 <+113>:	call   0x80100390 <panic>
+End of assembler dump.
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [Remote target] will be detached.
+
+Quit anyway? (y or n) y
+Detaching from program: /home/csusb.edu/005670557/cse461/xv6/kernel, Remote target
+Ending remote debugging.
+]0;005670557@csusb.edu@jb358-1:~/cse461/xv6[005670557@csusb.edu@jb358-1 xv6]$ exit
+
+Script done on 2019-01-13 12:03:08-08:00
